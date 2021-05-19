@@ -1,16 +1,14 @@
-# This is a sample Python script.
+from decouple import config
+import telebot
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+TELEGRAM_TOKEN = config('TELEGRAM_TOKEN')
+BINANCE_TOKEN = config('BINANCE_TOKEN')
+BINANCE_SECRET_KEY = config('BINANCE_SECRET_KEY')
 
+bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    import handlers.message
+    print('Starting polling...')
+    print(bot)
+    bot.polling()
